@@ -2,18 +2,14 @@ export function memoize(f) {
     // TODO
     if (typeof f === 'undefined' || typeof f !== 'function') { return null; }
     const cache = {};
-    function memoized(...args)
-    {
+    function memoized(...args) {
         const key = JSON.stringify(args);
-        if (key in cache)
-        {
+        if (key in cache) {
             return cache[key];
         }
         const result = f.apply(this, args);
         cache[key] = result;
         return result;
-
     }
     return memoized;
-
 }
